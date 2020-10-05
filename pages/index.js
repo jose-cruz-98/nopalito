@@ -16,6 +16,7 @@ import Jump from'react-reveal/Jump'
 import Slide from'react-reveal/Slide'
 
 import TechnicalSupportImg from '../styles/img/technical-support.jpg'
+import CorrectiveTechnicalSupportImg from '../styles/img/corrective-technical-support.jpg'
 
 export default function Home() {
   return (
@@ -110,7 +111,7 @@ export default function Home() {
                     </div>
                   </div>
                 </Slide>
-                <Slide right><div><img src={TechnicalSupportImg}  alt="mantenimiento preventivo"/></div></Slide>
+                <Slide right><div><img src={CorrectiveTechnicalSupportImg}  alt="mantenimiento preventivo"/></div></Slide>
               </div>
           </div>
         </section>

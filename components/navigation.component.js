@@ -13,11 +13,7 @@ import Slide from 'react-reveal/Slide'
 
 export function Navigation({children}){
     const [isScroll  , setIsScroll] = useState(false)
-    
-    // FUNCTIONS
-    // const isScrolling = () => {
 
-    // }
     useEffect(() => {
         window.addEventListener('scroll', function(e) {
             let scroolPosition = window.scrollY;
@@ -30,12 +26,9 @@ export function Navigation({children}){
         })
     },[])
 
-    console.log(isScroll);
-
     // RENDER
     return(
         <React.Fragment>
-            {/* {isScrolling()} */}
             <AppBar position="fixed" className={`nav-bar ${isScroll ? "active" : ""}`}>
                 <Toolbar className="col align-self-center">
                     <Typography variant="h4" style={{flexGrow:1}}>
