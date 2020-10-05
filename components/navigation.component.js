@@ -1,4 +1,5 @@
 import React,{useState, useEffect} from 'react'
+import Head from 'next/Head'
 
 import { 
     AppBar,
@@ -29,6 +30,7 @@ export function Navigation({children}){
     // RENDER
     return(
         <React.Fragment>
+            <Head><meta name="viewport" content="initial-scale=1.0, width=device-width" /></Head>
             <AppBar position="fixed" className={`nav-bar ${isScroll ? "active" : ""}`}>
                 <Toolbar className="col align-self-center">
                     <Typography variant="h4" style={{flexGrow:1}}>
