@@ -37,7 +37,7 @@ $disabled: #a3a3a3;
 
 $transition:all 0.2s ease-in-out;
 $radius : 2px;
-$box-shadow: 0 0 5px 3px;
+$box-shadow: 0px 0px 12px 0px;
 $box-shadow-top: 0px -5px  3px;
 $box-shadow-left: -5px 0px  3px;
 $box-shadow-bottom: 0px 5px  3px;
@@ -70,9 +70,14 @@ h1, h2, h3, h4, h5, h6{
 .text-body{color: $body !important;}
 .text-primary{color: $primary !important;}
 .text-secondary{color: $secondary !important;}
+.text-line-primary{border-bottom: solid 3px $primary;}
 .text-line-secondary{border-bottom: solid 3px $secondary;}
 
 .bg-tertiary{background: $tertiary !important;}
+
+a.btn-link{
+    color: $primary !important;
+}
 
 /////////////////////
 
@@ -136,25 +141,38 @@ h1, h2, h3, h4, h5, h6{
     padding: 5em 0 3em 0;
 }
 
+%service-card{
+    display: flex;
+    background: $tertiary;
+    border-radius: 20px;
+    padding: 2em;
+    width: 40em;
+    height: 15em;
+    position: absolute;
+    top: 2.5em;
+    box-shadow: $box-shadow #000;
+    transition: $transition;
+}
+
+%size-img-services{
+    width: 25em;
+    height: 20em;
+}
 .target-services-left{
     position: relative;
-    & > div:nth-child(1){
-        width: 25em;
-        height: 20em;
-        
-        & img{width: 100%;height: 100%;border-radius: 20px;}
+    &:hover{
+        & > div:nth-child(1){& img {margin-left: 1em;box-shadow: $box-shadow #000;}}
+        & > div:nth-child(2){ margin-left: -1em;}
     }
-
-    & > div:nth-child(2){
-        display: flex;
-        background: $tertiary;
-        border-radius: 20px;
-        padding: 2em;
-        width: 40em;
-        height: 15em;
-        position: absolute;
+    
+    & > div:nth-child(1){
+        @extend %size-img-services;
+        & img{width: 100%;height: 100%;border-radius: 20px;transition: $transition;}
+    }
+    
+    & > div:nth-child(2){ 
+        @extend %service-card;
         left: 20em;
-        top: 2.5em;
     }
 }
 
@@ -162,23 +180,49 @@ h1, h2, h3, h4, h5, h6{
     position: relative;
     display: flex;
     justify-content: flex-end;
+
+    &:hover{
+        & > div:nth-child(1){ margin-right: -1em;}
+        & > div:nth-child(2){& img {margin-left: -1em;box-shadow: $box-shadow #000;}}
+    }
+    
     & > div:nth-child(1){
-        display: flex;
-        background: $tertiary;
-        border-radius: 20px;
-        padding: 2em;
-        width: 40em;
-        height: 15em;
-        position: absolute;
+        @extend %service-card;
         right: 20em;
-        top: 2.5em;
         z-index: 1;
     }
 
     & > div:nth-child(2){
-        width: 25em;
-        height: 20em;
+        @extend %size-img-services;
+        & img{width: 100%;height: 100%;border-radius: 20px;transition: $transition;}
+    }
+}
+
+#contact{
+    display: flex;
+    align-items: center;
+    color: $body;
+    height: 25em;
+    background: $secondary;
+    margin-top: 5em;
+    & ul{
+        list-style: none;
+        & li {
+            margin-bottom: 1em;
+        }
+    }
+
+    & .contact-form{
         
-        & img{width: 100%;height: 100%;border-radius: 20px;}
+        & form{
+            color: $primary;
+            background: $tertiary;
+            width: 100%;
+            margin-top: -10em;
+            padding: 3em 1em 3em 1em;
+            border-radius: 20px;
+            box-shadow: $box-shadow #000;
+        }
+
     }
 }

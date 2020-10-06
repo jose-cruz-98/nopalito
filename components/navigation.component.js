@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import Head from 'next/head'
+import Link from 'next/link'
 
 import { 
     AppBar,
@@ -44,7 +45,7 @@ export function Navigation({children}){
                     <Slide top big cascade>
                         <div>
                             <Button color="inherit" className="mr-05">Inicio</Button>
-                            <Button color="inherit" className="mr-05">Servicios</Button>
+                            <Link href="#services" className="btn-link"><Button color="inherit" className="mr-05">Servicios</Button></Link>
                             <Button color="inherit" className="mr-05">Clientes</Button>
                             <Button color="inherit" className="mr-05">Acerca de nosotros</Button>
                             <Button color="inherit" className="mr-05">Galeria</Button>
