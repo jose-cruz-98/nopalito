@@ -82,7 +82,7 @@ export default function Home() {
         </section>
         <section id="services" className="py-3">
           <div className="container">
-            <Slide left><Typography variant="h3" className="mb-1 text-line-secondary col-md-9">Algunos de nuestros servicios</Typography></Slide>
+            <Slide left><Typography variant="h3" className="mb-1 text-line-secondary col-md-9">Algunos de nuestros servicios ...</Typography></Slide>
             <div className="row card-services card-services-left mb-2">
               <Slide left>
                 <div className="card-services-img">
