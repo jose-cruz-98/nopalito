@@ -6,8 +6,16 @@ import {
     AppBar,
     Toolbar,
     Typography,
-    Button
+    Button,
+    Drawer,
+    List,
+    ListItem,
+    ListItemText,
+    Hidden,
+    IconButton
 } from '@material-ui/core'
+
+import {Menu as MenuIcon} from '@material-ui/icons'
 
 import Logo from '../styles/img/logo.svg'
 
@@ -15,6 +23,7 @@ import Slide from 'react-reveal/Slide'
 
 export function Navigation({children}){
     const [isScroll  , setIsScroll] = useState(false)
+    const [isOpenDrawer, setIsOpenDrawer] = useState(false)
 
     useEffect(() => {
         window.addEventListener('scroll', function(e) {
@@ -42,18 +51,55 @@ export function Navigation({children}){
                             </div>
                         </Slide>
                     </Typography>
-                    <Slide top big cascade>
-                        <div>
-                            <Button color="inherit" className="mr-05">Inicio</Button>
-                            <Link href="#services" className="btn-link"><Button color="inherit" className="mr-05">Servicios</Button></Link>
-                            <Button color="inherit" className="mr-05">Clientes</Button>
-                            <Button color="inherit" className="mr-05">Acerca de nosotros</Button>
-                            <Button color="inherit" className="mr-05">Galeria</Button>
-                            <Button color="primary" variant="contained">Contacto</Button>
+                    <Hidden smDown mdDown>
+                        <div className="row">
+                            <Slide top big><Button color="inherit" className="mr-05">Inicio</Button></Slide>
+                            <Slide top big delay={500}><Link href="#services" className="btn-link"><Button color="inherit" className="mr-05">Servicios</Button></Link></Slide>
+                            <Slide top big delay={700}><Button color="inherit" className="mr-05">Clientes</Button></Slide>
+                            <Slide top big delay={900}><Button color="inherit" className="mr-05">Acerca de nosotros</Button></Slide>
+                            <Slide top big delay={1100}><Button color="inherit" className="mr-05">Galeria</Button></Slide>
+                            <Slide top big delay={1300}><Button color="primary" variant="contained">Contacto</Button></Slide>
                         </div>
-                    </Slide>
+                    </Hidden>
+                    <Hidden mdUp> 
+                        <div>
+                            <Slide top big>
+                                <IconButton 
+                                    style={{color: "#e6e6e6"}}
+                                    onClick={() => setIsOpenDrawer(!isOpenDrawer)}
+                                >
+                                    <MenuIcon style={{color: "#e6e6e6",fontSize : "2em"}}/> Menu
+                                </IconButton>
+                            </Slide>
+                        </div>
+                    </Hidden>
                 </Toolbar>
             </AppBar>
+            <Drawer 
+                open={isOpenDrawer}
+                onClick={() => setIsOpenDrawer(!isOpenDrawer)}
+                anchor="left"
+            >
+                <div className="sidebar">
+                    <List>
+                        <ListItem component={Button} variant="text" className="text-body h">
+                            <ListItemText primary="Servicios"/>
+                        </ListItem>
+                        <ListItem component={Button} variant="text" className="text-body">
+                            <ListItemText primary="Clientes"/>
+                        </ListItem>
+                        <ListItem component={Button} variant="text" className="text-body">
+                            <ListItemText primary="Acerca de nosotros"/>
+                        </ListItem>
+                        <ListItem component={Button} variant="text" className="text-body">
+                            <ListItemText primary="Galeria"/>
+                        </ListItem>
+                        <ListItem component={Button} variant="contained" color="secondary">
+                            <ListItemText primary="Contacto"/>
+                        </ListItem>
+                    </List>
+                </div>
+            </Drawer>
             <div>{children}</div>
         </React.Fragment>
     )
