@@ -7,7 +7,6 @@ import { Typography } from "@material-ui/core";
 
 
 function PreventiveMaintenance(){
-    const router = useRouter()
     // VARIABLES
 
     // FUNCTIONS
