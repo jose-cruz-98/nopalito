@@ -54,7 +54,7 @@ html {scroll-behavior: smooth;}
 body{
     font-family: 'Saira Condensed', sans-serif !important;
     font-size: 1.1em !important;
-    font-weight: 600;
+    font-weight: bold !important;
     background: $body;
     color: $primary;
     letter-spacing: 2px !important;
@@ -74,9 +74,26 @@ h1, h2, h3, h4, h5, h6{
 .text-line-secondary{border-bottom: solid 3px $secondary;}
 
 .bg-tertiary{background: $tertiary !important;color: $primary !important;}
+.bg-primary-dark{background: $primary-dark !important;color: $body !important;}
 
-a.btn-link{
-    color: $primary !important;
+.link-navbar{
+    cursor: pointer !important;
+    transition: $transition;
+    
+    &:hover{
+        padding-left: 1.5em;
+        background: $tertiary-dark;
+    }
+}
+
+.link-text-body{
+    text-decoration: none !important;
+    color: $body !important;
+    cursor: pointer;
+}
+
+.divider-left-secondary{
+    border-left: solid 2px $secondary;
 }
 
 /////////////////////
@@ -97,12 +114,22 @@ a.btn-link{
         & > div > img{height: 100px;display: none}
     }
 
+    & .menu-icon-bar{
+        color: $body;
+
+        & svg{font-size: 1.5em;}
+    }
+
     &.active{
         background: $tertiary !important;
         height: 75px;
         color: $primary !important;
 
         & .nav-bar-logo{& > div > img{height: 60px;display: block}}
+
+        & .menu-icon-bar{
+            color: $primary;
+        }
     }
 }
 
@@ -225,6 +252,14 @@ footer{
     color: $body;
 }
 
+.sub-list-colapse{ 
+    & .sub-list{
+        background: $tertiary;
+        color: $primary;
+        border-radius: 15px;
+    }
+}
+
 @media (min-width: 768px) { // md
 
     .card-services{
@@ -314,6 +349,17 @@ footer{
                     margin-left: 1em;
                 } 
             }
+        }
+    }
+
+    .sub-list-colapse{
+        position: relative;
+        
+        & .sub-list{
+            width: 15em;
+            position: absolute;
+            top: 2.5em;
+            left: -7.5em;
         }
     }
 }

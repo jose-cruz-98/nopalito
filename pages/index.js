@@ -1,6 +1,7 @@
 import Head from 'next/head'
 
 import { Navigation } from '../components/navigation.component';
+import Footer from '../components/footer.component'
 
 import {
   Typography,
@@ -15,8 +16,7 @@ import {
   LocationOn,
   Phone,
   Mail,
-  Send,
-  Facebook
+  Send
 } from '@material-ui/icons'
 
 import Jump from 'react-reveal/Jump'
@@ -82,7 +82,7 @@ export default function Home() {
         </section>
         <section id="services" className="py-3">
           <div className="container">
-            <Slide left><Typography variant="h3" className="mb-1 text-line-secondary col-md-9">Algunos de nuestros servicios ...</Typography></Slide>
+            <Slide left><Typography variant="h3" className="mb-1 text-line-secondary col-md-10 col-12">Algunos de nuestros servicios ...</Typography></Slide>
             <div className="row card-services card-services-left mb-2">
               <Slide left>
                 <div className="card-services-img">
@@ -92,7 +92,7 @@ export default function Home() {
               <Slide right>
                 <div className="card-services-text row justify-content-center align-items-center">
                   <div className="col-12">
-                    <Typography variant="h4" className="text-line-secondary mb-05">Mantenimientos preventivo</Typography>
+                    <Typography variant="h4" className="text-line-secondary mb-05">Mantenimiento preventivo</Typography>
                     <Typography variant="body1">
                       Este mantenimiento es util para pevenir que tu equipo sufra algun percance en un futuro.
                     </Typography>
@@ -118,7 +118,7 @@ export default function Home() {
               <Slide left>
                 <div className="card-services-text row justify-content-center align-items-center">
                   <div className="col-12">
-                    <Typography variant="h4" className="text-line-secondary mb-05">Mantenimientos correctivo</Typography>
+                    <Typography variant="h4" className="text-line-secondary mb-05">Mantenimiento correctivo</Typography>
                     <Typography variant="body1">
                       Este mantenimiento es util cuando se requiere cambiar o reparar algun componente que afecte el funcionamiento de su equipo.
                     </Typography>
@@ -144,9 +144,9 @@ export default function Home() {
               <Slide right>
                 <div className="card-services-text row justify-content-center align-items-center">
                   <div className="col-12">
-                    <Typography variant="h4" className="text-line-secondary mb-05">Diseños web</Typography>
+                    <Typography variant="h4" className="text-line-secondary mb-05">Paginas web</Typography>
                     <Typography variant="body1">
-                      Si tienes un negocio pero no tienes un paguina web, este es un buen momento para tener la tuya propia
+                      Si tienes un negocio pero no tienes un pagina web, este es un buen momento para tener la tuya.
                       </Typography>
                     <div className="row justify-content-center align-items-center">
                       <Button
@@ -191,27 +191,27 @@ export default function Home() {
               <div className="col-md-6 col-lg-4 contact-form">
                 <Slide bottom>
                   <form className="col-12">
-                    <Typography variant="h5" className="mb-1 text-center">Madanos un mensaje</Typography>
+                    <Typography variant="h5" className="mb-1 text-center">Mándanos un mensaje</Typography>
                     <div className="col-12 mb-1">
                       <TextField
                         fullWidth
                         className="input-contact"
                         id="tName"
-                        label="¿Cual es tu nombre?"
+                        label="¿Cuál es tu nombre?"
                         variant="outlined" />
                     </div>
                     <div className="col-12 mb-1">
                       <TextField
                         fullWidth
                         id="tEmail"
-                        label="¿Cual es tu correo electronico?"
+                        label="¿Cuál es tu correo electronico?"
                         variant="outlined" />
                     </div>
                     <div className="col-12 mb-1">
                       <TextField
                         fullWidth
                         id="tMessage"
-                        label="¿En que podemos ayudarte?"
+                        label="¿En qué podemos ayudarte?"
                         variant="outlined" />
                     </div>
                     <div className="text-center">
@@ -234,20 +234,7 @@ export default function Home() {
             </div>
           </Slide>
         </section>
-        <footer>
-          <Slide bottom cascade>
-            <div className="col-12 pt-2 pb-1"><Typography variant="h5" className="text-center"><i>"Original like innovative"</i></Typography> </div>
-            <div className="row justify-content-center mb-1">
-              <div>
-                <a href="https://www.facebook.com/Nopalitoio-108502050995321" target="_blank" className="social-icons"><Facebook style={{ fontSize: "3em" }} /></a>
-              </div>
-            </div>
-            <div className="col-12 pb-2">
-              <Typography variant="h6" className="text-center">&copy; Todos los derechos recervados. Powered by Nopalito<span className="text-secondary">.</span>io</Typography>
-            </div>
-          </Slide>
-
-        </footer>
+        <Footer />
       </Navigation>
     </React.Fragment>
   )

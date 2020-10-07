@@ -12,29 +12,39 @@ import {
     ListItem,
     ListItemText,
     Hidden,
-    IconButton
+    IconButton,
+    Collapse,
+    Divider
 } from '@material-ui/core'
 
-import {Menu as MenuIcon} from '@material-ui/icons'
+import {
+    Menu as MenuIcon,
+    ExpandMore,
+    ExpandLess,
+    Close
+} from '@material-ui/icons'
 
 import Logo from '../styles/img/logo.svg'
 
 import Slide from 'react-reveal/Slide'
 
-export function Navigation({children}){
-    const [isScroll  , setIsScroll] = useState(false)
+export function Navigation({children, active=false}){
+    const [isScroll  , setIsScroll] = useState(active ? true : false)
     const [isOpenDrawer, setIsOpenDrawer] = useState(false)
+    const [showServices, setShowServices] = useState(false)
 
     useEffect(() => {
-        window.addEventListener('scroll', function(e) {
-            let scroolPosition = window.scrollY;
-
-            if(scroolPosition >= 100){
-                setIsScroll(true)
-            }else{
-                setIsScroll(false)
-            }
-        })
+        if(active === false){
+            window.addEventListener('scroll', function(e) {
+                let scroolPosition = window.scrollY;
+    
+                if(scroolPosition >= 100){
+                    setIsScroll(true)
+                }else{
+                    setIsScroll(false)
+                }
+            })
+        }
     },[])
 
     // RENDER
@@ -53,8 +63,45 @@ export function Navigation({children}){
                     </Typography>
                     <Hidden smDown mdDown>
                         <div className="row">
-                            <Slide top big><Button color="inherit" className="mr-05">Inicio</Button></Slide>
-                            <Slide top big delay={500}><Link href="#services" className="btn-link"><Button color="inherit" className="mr-05">Servicios</Button></Link></Slide>
+                            <Slide top big><Link href="/"><Button color="inherit" className="mr-05">Inicio</Button></Link></Slide>
+                            <Slide top big delay={500}>
+                                <Button 
+                                    color="inherit" 
+                                    className="mr-05" 
+                                    onClick={() => setShowServices(!showServices)}
+                                    endIcon={!showServices ? <ExpandMore /> : <ExpandLess />}
+                                >Servicios</Button>
+                            </Slide>
+                            <Collapse
+                                in={showServices}
+                                timeout="auto"
+                                unmountOnExit
+                                className="sub-list-colapse"
+                            >
+                                <List
+                                    component="div"
+                                    disablePadding
+                                    className="sub-list"
+                                >
+                                        <Link href="/services/preventive-maintenance">
+                                            <ListItem className="link-navbar">
+                                                <ListItemText primary="Mantenimineto Preventivo"/>
+                                            </ListItem>
+                                        </Link>
+                                    <Divider />
+                                    <Link href="/services/corrective-maintenance">
+                                        <ListItem className="link-navbar">
+                                            <ListItemText primary="Mantenimineto Correctivo"/>
+                                        </ListItem>
+                                    </Link>
+                                    <Divider />
+                                    <Link href="/services/websites">
+                                        <ListItem className="link-navbar">
+                                            <ListItemText primary="Paginas web"/>
+                                        </ListItem>
+                                    </Link>
+                                </List>
+                            </Collapse>
                             <Slide top big delay={700}><Button color="inherit" className="mr-05">Clientes</Button></Slide>
                             <Slide top big delay={900}><Button color="inherit" className="mr-05">Acerca de nosotros</Button></Slide>
                             <Slide top big delay={1100}><Button color="inherit" className="mr-05">Galeria</Button></Slide>
@@ -65,10 +112,10 @@ export function Navigation({children}){
                         <div>
                             <Slide top big>
                                 <IconButton 
-                                    style={{color: "#e6e6e6"}}
+                                    className="menu-icon-bar"
                                     onClick={() => setIsOpenDrawer(!isOpenDrawer)}
                                 >
-                                    <MenuIcon style={{color: "#e6e6e6",fontSize : "2em"}}/> Menu
+                                    <MenuIcon /> Menu
                                 </IconButton>
                             </Slide>
                         </div>
@@ -77,14 +124,52 @@ export function Navigation({children}){
             </AppBar>
             <Drawer 
                 open={isOpenDrawer}
-                onClick={() => setIsOpenDrawer(!isOpenDrawer)}
                 anchor="left"
             >
                 <div className="sidebar">
                     <List>
-                        <ListItem component={Button} variant="text" className="text-body h">
+                        <div className="row justify-content-between pl-1">
+                            <Typography variant="h3">Menu</Typography>
+                            <IconButton color="inherit" onClick={() => setIsOpenDrawer(!isOpenDrawer)}><Close /></IconButton>
+                        </div>
+                        <ListItem 
+                            component={Button} 
+                            variant="text" 
+                            className="text-body h"
+                            onClick={() => setShowServices(!showServices)}
+                            endIcon={!showServices ? <ExpandMore /> : <ExpandLess />}>
                             <ListItemText primary="Servicios"/>
                         </ListItem>
+                        <Collapse
+                                in={showServices}
+                                timeout="auto"
+                                unmountOnExit
+                                className="sub-list-colapse"
+                            >
+                                <List
+                                    component="div"
+                                    disablePadding
+                                    className="sub-list"
+                                >
+                                        <Link href="/services/preventive-maintenance">
+                                            <ListItem className="link-navbar">
+                                                <ListItemText primary="Mantenimineto Preventivo"/>
+                                            </ListItem>
+                                        </Link>
+                                    <Divider />
+                                    <Link href="/services/corrective-maintenance">
+                                        <ListItem className="link-navbar">
+                                            <ListItemText primary="Mantenimineto Correctivo"/>
+                                        </ListItem>
+                                    </Link>
+                                    <Divider />
+                                    <Link href="/services/websites">
+                                        <ListItem className="link-navbar">
+                                            <ListItemText primary="Paginas web"/>
+                                        </ListItem>
+                                    </Link>
+                                </List>
+                            </Collapse>
                         <ListItem component={Button} variant="text" className="text-body">
                             <ListItemText primary="Clientes"/>
                         </ListItem>

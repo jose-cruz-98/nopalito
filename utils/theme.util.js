@@ -1,6 +1,10 @@
 import {createMuiTheme, responsiveFontSizes} from '@material-ui/core/styles'
 
-let theme = createMuiTheme()
+let theme = createMuiTheme({
+    typography : {
+        fontFamily : "'Saira Condensed', sans-serif",
+    }
+})
 
 theme.overrides.MuiButton = {
     root : {
